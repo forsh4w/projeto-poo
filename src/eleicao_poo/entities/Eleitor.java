@@ -1,4 +1,4 @@
-package pessoa;
+package eleicao_poo.entities;
 
 import java.util.Date;
 import java.text.ParseException;
@@ -7,10 +7,12 @@ import java.util.regex.Pattern;
 
 public class Eleitor extends Cidadao {
     private String titulo;
+    private boolean jaVotou;
     
     public Eleitor(String nome, String cpf, String dataNascimento,  String titulo) throws ParseException {   
         super(nome, cpf, dataNascimento);
         this.titulo = titulo;
+        this.jaVotou = false;
     }
 
     public Eleitor(String nome, String cpf, Date dataNascimento, String titulo) throws ParseException {
@@ -28,8 +30,17 @@ public class Eleitor extends Cidadao {
         this.titulo = titulo;
     }
 
+    public void votar() {
+        if(this.jaVotou == false)
+            this.jaVotou = true;
+    }
+
     public String getTitulo() {
         return titulo;
+    }
+
+    public boolean getJaVotou() {
+        return this.jaVotou;
     }
 
 

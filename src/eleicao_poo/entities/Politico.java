@@ -1,6 +1,5 @@
-package pessoa;
+package eleicao_poo.entities;
 import java.util.Date;
-import entidade.PartidoPolitico;
 
 public class Politico extends Cidadao {
     private PartidoPolitico partido;

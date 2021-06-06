@@ -1,4 +1,4 @@
-package pessoa;
+package eleicao_poo.entities;
 
 import java.util.Date;
 

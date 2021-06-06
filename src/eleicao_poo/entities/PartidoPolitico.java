@@ -1,9 +1,6 @@
-package entidade;
+package eleicao_poo.entities;
 
 import java.util.ArrayList;
-
-
-import pessoa.Politico;
 
 public class PartidoPolitico {
     private String nome;

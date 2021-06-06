@@ -1,4 +1,4 @@
-package pessoa;
+package eleicao_poo.entities;
 import java.util.Date;
 import java.util.regex.Pattern;
 import java.text.ParseException;
