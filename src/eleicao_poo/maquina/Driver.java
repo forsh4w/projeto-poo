@@ -4,15 +4,19 @@ import java.util.Scanner;
 
 import eleicao_poo.controller.CidadaoController;
 import eleicao_poo.controller.PartidoController;
+import eleicao_poo.entities.Votacao;
 
 public class Driver {
     private Scanner input;
     private CidadaoController cidadaoController;
     private PartidoController partidoController;
+    private Votacao votacao;
+
     public Driver () {
         this.input = new Scanner(System.in);
         this.cidadaoController = new CidadaoController(this);
         this.partidoController = new PartidoController(this);
+        this.votacao = new Votacao(this);
     }
 
     public void menu() {
@@ -32,6 +36,9 @@ public class Driver {
                 case 2:
                     this.partidoController.menu();
                     break;
+                case 3:
+                    this.votacao.menu();
+                    break;  
                 case 4:
                     System.exit(0);
             }
@@ -47,5 +54,8 @@ public class Driver {
 
     public CidadaoController getCidadaoController() {
         return this.cidadaoController;
+    }
+    public Votacao getVotacao() {
+        return this.votacao;
     }
 }

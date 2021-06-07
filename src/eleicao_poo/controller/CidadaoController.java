@@ -84,9 +84,33 @@ public class CidadaoController {
         }
         
     }
-    
+    // TODO: IMPLEMENTAR A LÓGICA DESSE MÉTODO
     private void buscarDadosEleitorais() {
         System.out.println("Digite o cpf do cidadao");
+
+
+    }
+
+    public Eleitor findEleitor() {
+        String titulo_eleitor = "";
+        System.out.println("Digite o titulo do eleitor");
+        try {
+            Eleitor.verificaTitulo(titulo_eleitor);
+            titulo_eleitor = this.input.nextLine();
+            return this.cidadaoDB.findEleitorByTitulo(titulo_eleitor);
+        } catch (Exception e) {
+            System.err.println(e.getMessage());
+            return null;
+        }
+
+    }
+
+    public  Politico findPoliticoByCpf() {
+        String cpf = "";
+        System.out.println("Digite o cpf do candidato");
+        cpf = this.input.nextLine();
+        return this.cidadaoDB.findPoliticoByCpf(cpf);
+        
     }
 
     private void CadastrarEleitor(String nome, String cpf, Date dataNascimento) {
