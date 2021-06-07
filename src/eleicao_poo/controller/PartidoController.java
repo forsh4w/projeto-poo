@@ -6,7 +6,6 @@ import eleicao_poo.data.PartidoDB;
 import eleicao_poo.entities.PartidoPolitico;
 import eleicao_poo.maquina.Driver;
 
-
 public class PartidoController {
     private Scanner input;
     private Driver driver;
@@ -67,7 +66,7 @@ public class PartidoController {
         partido = this.partidoDB.find(codigo_partido);
         if (partido.equals(null))
             System.err.println("Não foi encontrado nenhum partido com o código informado");
-        return partido; 
+        return partido;
     }
 
 }

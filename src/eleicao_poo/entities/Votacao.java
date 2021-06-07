@@ -6,7 +6,6 @@ import java.util.Scanner;
 import eleicao_poo.controller.CidadaoController;
 import eleicao_poo.maquina.Driver;
 
-
 public class Votacao {
     private Scanner input;
     private Driver driver;
@@ -19,7 +18,6 @@ public class Votacao {
         this.input = new Scanner(System.in);
     }
 
-
     public void menu() {
         int option = 0;
         System.out.println("Escolha uma opção");
@@ -31,7 +29,7 @@ public class Votacao {
         this.input.nextLine();
         try {
 
-            switch(option) {
+            switch (option) {
                 case 1:
                     this.votar();
                     break;
@@ -45,7 +43,7 @@ public class Votacao {
         } catch (Exception e) {
             System.err.println(e.getMessage());
         }
-         
+
     }
 
     public void votar() throws Exception {
@@ -60,27 +58,20 @@ public class Votacao {
         }
         votante.votar();
         candidato.addVoto();
-        if(!this.votos.containsValue(votante)) 
+        if (!this.votos.containsValue(votante))
             this.votos.put(candidato, votante);
         else {
             throw new Exception("Eleitor já votou");
-        }    
-            
+        }
 
-        
     }
 
+    // TODO: IMPLEMENTAR METODO DE CONSULTA PARCIAL
+    public void consultarResultadoParcial() {
+    }
 
-    //TODO: IMPLEMENTAR  METODO DE CONSULTA PARCIAL
-    public void consultarResultadoParcial(){ }
-    //TODO: IMPLEMENTAR  METODO DE CONSULTA PARCIAL
-    public void auditarVotos() { }
-
-    
-
-   
+    // TODO: IMPLEMENTAR METODO DE CONSULTA PARCIAL
+    public void auditarVotos() {
+    }
 
 }
-
-
-

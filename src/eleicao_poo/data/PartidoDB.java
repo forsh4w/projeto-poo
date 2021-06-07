@@ -18,7 +18,7 @@ public class PartidoDB implements Database<PartidoPolitico> {
 
     @Override
     public void add(PartidoPolitico partido) {
-        if(this.find(partido.getCodigo())!= null) {
+        if (this.find(partido.getCodigo()) != null) {
             System.err.println("Já existe um partido com esse código");
             return;
         }
@@ -27,7 +27,7 @@ public class PartidoDB implements Database<PartidoPolitico> {
 
     @Override
     public PartidoPolitico find(String codigo) {
-        for(PartidoPolitico pp : this.partidos) {
+        for (PartidoPolitico pp : this.partidos) {
             if (pp.getCodigo().equals(codigo))
                 return pp;
         }
@@ -43,5 +43,5 @@ public class PartidoDB implements Database<PartidoPolitico> {
     public boolean remove(PartidoPolitico partido) {
         return this.partidos.remove(partido);
     }
-    
+
 }

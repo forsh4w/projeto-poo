@@ -12,7 +12,7 @@ public class Driver {
     private PartidoController partidoController;
     private Votacao votacao;
 
-    public Driver () {
+    public Driver() {
         this.input = new Scanner(System.in);
         this.cidadaoController = new CidadaoController(this);
         this.partidoController = new PartidoController(this);
@@ -38,7 +38,7 @@ public class Driver {
                     break;
                 case 3:
                     this.votacao.menu();
-                    break;  
+                    break;
                 case 4:
                     System.exit(0);
             }
@@ -46,7 +46,6 @@ public class Driver {
             System.err.println(e.getMessage());
         }
     }
-    
 
     public PartidoController getPartidoController() {
         return this.partidoController;
@@ -55,6 +54,7 @@ public class Driver {
     public CidadaoController getCidadaoController() {
         return this.cidadaoController;
     }
+
     public Votacao getVotacao() {
         return this.votacao;
     }

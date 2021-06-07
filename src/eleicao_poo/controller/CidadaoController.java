@@ -1,9 +1,8 @@
 package eleicao_poo.controller;
 
-import java.util.Scanner;
 import java.text.SimpleDateFormat;
 import java.util.Date;
-
+import java.util.Scanner;
 
 import eleicao_poo.data.CidadaoDB;
 import eleicao_poo.entities.Cidadao;
@@ -33,18 +32,18 @@ public class CidadaoController {
 
         option = input.nextInt();
         input.nextLine();
-        if(option == 1)
+        if (option == 1)
             this.CadastrarCidadao();
-        
+
         else if (option == 3)
-           this.driver.menu();
+            this.driver.menu();
         else {
             System.out.println("Digite uma opção válida");
             this.menu();
-        } 
+        }
     }
 
-    private void CadastrarCidadao () {
+    private void CadastrarCidadao() {
         SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
         String nome = "";
         String cpf = "";
@@ -69,25 +68,25 @@ public class CidadaoController {
                 System.out.println("2 - Desejo cadastrar um politico");
                 option = input.nextInt();
                 input.nextLine();
-                if(option == 1)
+                if (option == 1)
                     this.CadastrarEleitor(nome, cpf, dataNascimento);
                 else if (option == 2)
                     this.CadastrarPolitico(nome, cpf, dataNascimento);
                 else {
                     System.err.println("Digite uma opção válida");
                 }
-                
+
             }
             this.menu();
-        } catch(Exception e) {
+        } catch (Exception e) {
             System.err.println(e.getMessage());
         }
-        
+
     }
+
     // TODO: IMPLEMENTAR A LÓGICA DESSE MÉTODO
     private void buscarDadosEleitorais() {
         System.out.println("Digite o cpf do cidadao");
-
 
     }
 
@@ -105,12 +104,12 @@ public class CidadaoController {
 
     }
 
-    public  Politico findPoliticoByCpf() {
+    public Politico findPoliticoByCpf() {
         String cpf = "";
         System.out.println("Digite o cpf do candidato");
         cpf = this.input.nextLine();
         return this.cidadaoDB.findPoliticoByCpf(cpf);
-        
+
     }
 
     private void CadastrarEleitor(String nome, String cpf, Date dataNascimento) {
@@ -147,7 +146,7 @@ public class CidadaoController {
     private boolean maiorIdade(Date dataNascimento) {
         Date current_date = new Date();
         int CONVERSION_FACTOR = 1000 * 3600 * 24 * 365;
-        return ((current_date.getTime() - dataNascimento.getTime())/CONVERSION_FACTOR >= 18);
+        return ((current_date.getTime() - dataNascimento.getTime()) / CONVERSION_FACTOR >= 18);
 
     }
 }
