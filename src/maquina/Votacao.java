@@ -35,6 +35,7 @@ public class Votacao {
 
     }
 
+    // Eleitores:
     public void CadastrarEleitor() throws Exception {
         String cpf;
         String nome;

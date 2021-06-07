@@ -14,15 +14,16 @@ public class Politico extends Cidadao {
             throws ParseException {
         super(nome, cpf, dataNascimento);
         this.partido = partido;
-        this.votos = votos;
         this.codigo = codigo;
+        this.votos = 0;
     }
 
-    public Politico(String nome, String cpf, Date dataNascimento, PartidoPolitico partido) throws ParseException {
+    public Politico(String nome, String cpf, Date dataNascimento, PartidoPolitico partido, String codigo)
+            throws ParseException {
         super(nome, cpf, dataNascimento);
         this.partido = partido;
+        this.codigo = codigo;
         this.votos = 0;
-
     }
 
     public String getCodigo() {
@@ -48,7 +49,7 @@ public class Politico extends Cidadao {
     @Override
     public String getDadosEleitorais() {
         StringBuilder builder = new StringBuilder();
-        builder.append("nome do candidato:").append(super.getNome()).append("nome do partido: ")
+        builder.append("Nome do candidato:").append(super.getNome()).append("Nome do partido: ")
                 .append(this.partido.getNome());
         return builder.toString();
     }
