@@ -47,7 +47,7 @@ public class Eleitor extends Cidadao {
     @Override
     public String getDadosEleitorais() {
         StringBuilder builder = new StringBuilder();
-        builder.append("nome: ").append(this.getNome()).append("Titulo de eleitor: ").append(this.titulo);
+        builder.append("Nome: ").append(this.getNome()).append("Titulo de eleitor: ").append(this.titulo);
         return builder.toString();
     }
 

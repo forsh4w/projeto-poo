@@ -84,10 +84,29 @@ public class CidadaoController {
 
     }
 
-    // TODO: IMPLEMENTAR A LÓGICA DESSE MÉTODO
     private void buscarDadosEleitorais() {
-        System.out.println("Digite o cpf do cidadao");
+        String cpf = "";
 
+        System.out.println("Digite o cpf do cidadao");
+        cpf = input.nextLine();
+
+        try {
+            Cidadao cidadao = cidadaoDB.find(cpf);
+            if (cidadao instanceof Eleitor) {
+                System.out.println(((Eleitor) cidadao).getDadosEleitorais());
+                if (((Eleitor) cidadao).getJaVotou()) {
+                    System.out.println("Já votou.");
+                } else {
+                    System.out.println("Ainda não votou.");
+                }
+            } else if (cidadao instanceof Politico) {
+                System.out.println(((Politico) cidadao).getDadosEleitorais());
+            }
+            return;
+        } catch (Exception e) {
+            System.err.println(e.getMessage());
+            return;
+        }
     }
 
     public Eleitor findEleitor() {

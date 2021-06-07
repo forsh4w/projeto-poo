@@ -28,7 +28,7 @@ public class Politico extends Cidadao {
     @Override
     public String getDadosEleitorais() {
         StringBuilder builder = new StringBuilder();
-        builder.append("nome do candidato:").append(super.getNome()).append("nome do partido: ")
+        builder.append("Nome do candidato:").append(super.getNome()).append("Nome do partido: ")
                 .append(this.partido.getNome());
         return builder.toString();
     }
