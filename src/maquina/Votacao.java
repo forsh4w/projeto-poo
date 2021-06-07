@@ -2,8 +2,8 @@ package maquina;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Scanner;
 import java.util.Date;
+import java.util.Scanner;
 
 import pessoa.Cidadao;
 import pessoa.Eleitor;
@@ -11,7 +11,6 @@ import pessoa.Eleitor;
 public class Votacao {
     private Scanner input;
     private ArrayList<Eleitor> eleitores;
-
 
     public Votacao() {
         this.input = new Scanner(System.in);
@@ -25,18 +24,18 @@ public class Votacao {
         System.out.println("1 - Cadastrar eleitor");
         option = input.nextInt();
         input.nextLine();
-        if(option == 1)
+        if (option == 1)
             this.CadastrarEleitor();
         else if (option == 0)
             System.exit(0);
         else {
             System.out.println("Digite uma opção válida");
             this.menu();
-        } 
+        }
 
     }
 
-    public void CadastrarEleitor() throws Exception{
+    public void CadastrarEleitor() throws Exception {
         String cpf;
         String nome;
         String titulo;
@@ -53,22 +52,22 @@ public class Votacao {
             System.out.println("Digte o numero do eleitor:");
             titulo = input.nextLine();
             Eleitor.verificaTitulo(titulo);
-            if(this.BuscarEleitorPorTitulo(titulo) != null)
+            if (this.BuscarEleitorPorTitulo(titulo) != null)
                 throw new Exception("Já existe um eleitor cadastro com esse titulo");
             System.out.println("Digte a data de nascimento do eleitor (dd/mm/yyyy)");
             dataNascimento = sdf.parse(input.nextLine());
             Eleitor eleitor = new Eleitor(cpf, nome, dataNascimento, titulo);
             eleitores.add(eleitor);
-        } catch(Exception e) {
+        } catch (Exception e) {
             System.err.println(e.getMessage());
         } finally {
             this.menu();
         }
-        
+
     }
 
     public Eleitor BuscarEleitorPorCpf(String cpf) {
-        for(Eleitor e : eleitores) {
+        for (Eleitor e : eleitores) {
             if (e.getCpf() == cpf)
                 return e;
         }
@@ -76,15 +75,11 @@ public class Votacao {
     }
 
     public Eleitor BuscarEleitorPorTitulo(String numeroDoEleitor) {
-        for(Eleitor e : eleitores) {
+        for (Eleitor e : eleitores) {
             if (e.getTitulo() == numeroDoEleitor)
                 return e;
         }
         return null;
     }
 
-
 }
-
-
-

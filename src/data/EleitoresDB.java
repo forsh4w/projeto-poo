@@ -6,7 +6,7 @@ import pessoa.Eleitor;
 
 public class EleitoresDB implements Database<Eleitor> {
     private ArrayList<Eleitor> eleitores;
-    
+
     @Override
     public void add(Eleitor eleitor) {
         this.eleitores.add(eleitor);
@@ -14,8 +14,8 @@ public class EleitoresDB implements Database<Eleitor> {
 
     @Override
     public Eleitor find(String titulo) {
-        for(Eleitor el: this.eleitores) {
-            if(el.getTitulo().equals(titulo))
+        for (Eleitor el : this.eleitores) {
+            if (el.getTitulo().equals(titulo))
                 return el;
         }
         return null;
@@ -31,5 +31,4 @@ public class EleitoresDB implements Database<Eleitor> {
         return this.eleitores.remove(entity);
     }
 
-    
 }

@@ -1,5 +1,7 @@
 package pessoa;
+
 import java.util.Date;
+
 import entidade.PartidoPolitico;
 
 public class Politico extends Cidadao {
@@ -28,8 +30,8 @@ public class Politico extends Cidadao {
     @Override
     public String getDadosEleitorais() {
         StringBuilder builder = new StringBuilder();
-        builder.append("nome do candidato:").append(super.getNome())
-            .append("nome do partido: ").append(this.partido.getNome());
+        builder.append("nome do candidato:").append(super.getNome()).append("nome do partido: ")
+                .append(this.partido.getNome());
         return builder.toString();
     }
 
