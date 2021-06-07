@@ -86,8 +86,25 @@ public class Votacao {
     // TODO: IMPLEMENTAR METODO DE CONSULTA PARCIAL
     // Todos os dados eleitorais dos votantes e dos cadindatos
     public void auditarVotos() {
-    }
+        ArrayList<Politico> politicos = new ArrayList<Politico>();
+        ArrayList<Eleitor> eleitores = new ArrayList<Eleitor>();
+        votos.forEach((politico, eleitor) -> {
+            politicos.add(politico);
+            eleitores.add(eleitor);
+        });
 
+        System.out.println("Dados dos votantes:");
+        for (Eleitor e : eleitores) {
+            System.out.println(e.getDadosEleitorais());
+        }
+
+        System.out.println("--------------------------------");
+
+        System.out.println("Dados dos candidatos:");
+        for (Politico p : politicos) {
+            System.out.println(p.getDadosEleitorais());
+        }
+    }
 }
 
 class VotosComparator implements Comparator<Politico> {
