@@ -1,5 +1,8 @@
 package eleicao_poo.entities;
 
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.Hashtable;
 import java.util.Scanner;
 
@@ -33,6 +36,10 @@ public class Votacao {
                 case 1:
                     this.votar();
                     break;
+                case 2:
+                    this.consultarResultadoParcial();
+                case 3:
+                    this.auditarVotos();
                 case 4:
                     this.driver.menu();
                     break;
@@ -66,12 +73,26 @@ public class Votacao {
 
     }
 
-    // TODO: IMPLEMENTAR METODO DE CONSULTA PARCIAL
+    // Quantidade de votos dos politicos ordenados de maior para o menor
     public void consultarResultadoParcial() {
+        ArrayList<Politico> politicos = new ArrayList<Politico>();
+        votos.forEach((politico, eleitor) -> politicos.add(politico));
+        Collections.sort(politicos, new VotosComparator());
+        for (Politico p : politicos) {
+            System.out.println("Votos: " + p.getVotos());
+        }
     }
 
     // TODO: IMPLEMENTAR METODO DE CONSULTA PARCIAL
+    // Todos os dados eleitorais dos votantes e dos cadindatos
     public void auditarVotos() {
     }
 
+}
+
+class VotosComparator implements Comparator<Politico> {
+    @Override
+    public int compare(Politico p1, Politico p2) {
+        return p1.getVotos() < p2.getVotos() ? -1 : p1.getVotos() == p2.getVotos() ? 0 : 1;
+    }
 }
