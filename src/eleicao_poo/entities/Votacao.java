@@ -83,7 +83,6 @@ public class Votacao {
         }
     }
 
-    // TODO: IMPLEMENTAR METODO DE CONSULTA PARCIAL
     // Todos os dados eleitorais dos votantes e dos cadindatos
     public void auditarVotos() {
         ArrayList<Politico> politicos = new ArrayList<Politico>();
