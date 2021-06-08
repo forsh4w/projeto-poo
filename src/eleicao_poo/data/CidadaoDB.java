@@ -15,10 +15,9 @@ public class CidadaoDB implements Database<Cidadao> {
         this.cidadoes = new ArrayList<Cidadao>();
     }
 
-    
     @Override
     public Cidadao find(String cpf) {
-        if(this.cidadoes.size() == 0)
+        if (this.cidadoes.size() == 0)
             return null;
         try {
             Cidadao.verificaCpf(cpf);
@@ -40,7 +39,7 @@ public class CidadaoDB implements Database<Cidadao> {
     }
 
     public Eleitor findEleitorByTitulo(String titulo) {
-        if(this.cidadoes.size() == 0)
+        if (this.cidadoes.size() == 0)
             return null;
         try {
             Eleitor.verificaTitulo(titulo);
@@ -59,7 +58,7 @@ public class CidadaoDB implements Database<Cidadao> {
     }
 
     public Politico findPoliticoByCpf(String cpf) {
-        if(this.cidadoes.size() == 0)
+        if (this.cidadoes.size() == 0)
             return null;
         try {
             Cidadao.verificaCpf(cpf);

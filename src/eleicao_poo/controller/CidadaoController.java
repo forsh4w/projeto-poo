@@ -35,7 +35,7 @@ public class CidadaoController {
         try {
             if (option == 1)
                 this.CadastrarCidadao();
-            if (option  == 2)
+            if (option == 2)
                 this.buscarDadosEleitorais();
             else if (option == 3)
                 this.driver.menu();
@@ -63,7 +63,7 @@ public class CidadaoController {
             cpf = input.nextLine();
             Cidadao.verificaCpf(cpf);
             Cidadao cidadao = this.cidadaoDB.find(cpf);
-            if(cidadao != null) {
+            if (cidadao != null) {
                 throw new Exception("Já existe um cidadao com esse cpf no sistema");
             }
             System.out.println("Digite a data de nascimento do cidadao");
@@ -88,7 +88,7 @@ public class CidadaoController {
 
             }
         } catch (Exception e) {
-          System.err.println(e.getMessage());
+            System.err.println(e.getMessage());
         } finally {
             this.menu();
         }
@@ -101,7 +101,7 @@ public class CidadaoController {
         cpf = input.nextLine();
         try {
             Cidadao cidadao = cidadaoDB.find(cpf);
-            if(cidadao == null)
+            if (cidadao == null)
                 System.out.println("Não foram encontrados cidadoes com o cpf informado");
             else if (cidadao instanceof Eleitor) {
                 System.out.println(((Eleitor) cidadao).getDadosEleitorais());
@@ -112,9 +112,9 @@ public class CidadaoController {
                 }
             } else if (cidadao instanceof Politico) {
                 System.out.println(((Politico) cidadao).getDadosEleitorais());
-            }else {
+            } else {
                 System.out.println(((MenorIdade) cidadao).getDadosEleitorais());
-            } 
+            }
         } catch (Exception e) {
             System.err.println(e.getMessage());
         }
@@ -142,7 +142,7 @@ public class CidadaoController {
             cpf = this.input.nextLine();
             Cidadao.verificaCpf(cpf);
             return this.cidadaoDB.findPoliticoByCpf(cpf);
-        } catch(Exception e) {
+        } catch (Exception e) {
             System.err.println(e.getMessage());
             return null;
         }
@@ -154,13 +154,13 @@ public class CidadaoController {
             System.out.println("Digite o numero do titulo de eleitor");
             tituloEleitor = this.input.nextLine();
             Eleitor.verificaTitulo(tituloEleitor);
-            if(cidadaoDB.findEleitorByTitulo(tituloEleitor) ==null) {
+            if (cidadaoDB.findEleitorByTitulo(tituloEleitor) == null) {
                 Eleitor el = new Eleitor(nome, cpf, dataNascimento, tituloEleitor);
                 this.cidadaoDB.add(el);
-            } else 
+            } else
                 throw new Exception("Já existe um cidadao cadastrado com esse titulo");
         } catch (Exception e) {
-            System.err.println(e.getMessage());    
+            System.err.println(e.getMessage());
         } finally {
             this.menu();
         }
