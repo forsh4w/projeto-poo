@@ -21,17 +21,18 @@ public class PartidoController {
         int option = 0;
         System.out.println("Ecolha uma opção: ");
         System.out.println("1 - Cadastrar partido");
-        System.out.println("2 - Alterar dados de um partido");
-        System.out.println("3 - Consultar dados de um partido");
-        System.out.println("4 - Retornar ao menu principal");
+        System.out.println("2 - Consultar dados de um partido");
+        System.out.println("3 - Retornar ao menu principal");
         option = this.input.nextInt();
         this.input.nextLine();
         switch (option) {
             case 1:
                 this.cadastrarPartido();
                 break;
-
-            case 4:
+            case 2:
+                this.visalizarDadosPartido();
+                break;
+            case 3:
                 this.driver.menu();
                 break;
             default:
@@ -54,6 +55,18 @@ public class PartidoController {
         System.out.println("Digite o codigo do partido");
         codigo_partido = this.input.nextLine();
         this.partidoDB.add(new PartidoPolitico(nome_partido, codigo_partido, posicaoPolitica, sigla_partido));
+        this.menu();
+
+    }
+
+    public void visalizarDadosPartido() {
+        PartidoPolitico partido = this.buscarPartido();
+        System.out.println("-----------------------------------");
+        System.out.println("Nome:" + partido.getNome());
+        System.out.println("Codigo:" + partido.getCodigo());
+        System.out.println("Posicao politica: " + partido.getPosicaoPolitica());
+        System.out.println("Sigla:" + partido.getSigla());
+        System.out.println("-----------------------------------");
         this.menu();
 
     }

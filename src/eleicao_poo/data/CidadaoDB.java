@@ -10,18 +10,16 @@ import eleicao_poo.entities.Politico;
 
 public class CidadaoDB implements Database<Cidadao> {
     private ArrayList<Cidadao> cidadoes;
-    private static final CidadaoDB singleton = new CidadaoDB();
 
-    private CidadaoDB() {
+    public CidadaoDB() {
         this.cidadoes = new ArrayList<Cidadao>();
     }
 
-    public static CidadaoDB getInstance() {
-        return singleton;
-    }
-
+    
     @Override
     public Cidadao find(String cpf) {
+        if(this.cidadoes.size() == 0)
+            return null;
         try {
             Cidadao.verificaCpf(cpf);
             for (Cidadao cidadao : this.cidadoes) {
@@ -42,6 +40,8 @@ public class CidadaoDB implements Database<Cidadao> {
     }
 
     public Eleitor findEleitorByTitulo(String titulo) {
+        if(this.cidadoes.size() == 0)
+            return null;
         try {
             Eleitor.verificaTitulo(titulo);
             for (Cidadao cidadao : this.cidadoes) {
@@ -59,6 +59,8 @@ public class CidadaoDB implements Database<Cidadao> {
     }
 
     public Politico findPoliticoByCpf(String cpf) {
+        if(this.cidadoes.size() == 0)
+            return null;
         try {
             Cidadao.verificaCpf(cpf);
             for (Cidadao cidadao : this.cidadoes) {
@@ -84,7 +86,7 @@ public class CidadaoDB implements Database<Cidadao> {
     @Override
     public void add(Cidadao cidadao) throws Exception {
         Cidadao cidadaoExistente = this.find(cidadao.getCpf());
-        if (!cidadaoExistente.equals(null))
+        if (cidadaoExistente != null)
             throw new Exception("Já existe um cidadao cadastrado com o cpf informado");
         else
             this.cidadoes.add(cidadao);

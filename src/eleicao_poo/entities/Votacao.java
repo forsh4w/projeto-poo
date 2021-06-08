@@ -50,7 +50,6 @@ public class Votacao {
         } catch (Exception e) {
             System.err.println(e.getMessage());
         }
-
     }
 
     public void votar() throws Exception {
@@ -60,15 +59,17 @@ public class Votacao {
         try {
             votante = cd.findEleitor();
             candidato = cd.findPoliticoByCpf();
+            votante.votar();
+            candidato.addVoto();
+            if (!this.votos.containsValue(votante))
+                this.votos.put(candidato, votante);
+            else {
+                throw new Exception("Eleitor já votou");
+            }
         } catch (Exception e) {
             System.err.println(e.getMessage());
-        }
-        votante.votar();
-        candidato.addVoto();
-        if (!this.votos.containsValue(votante))
-            this.votos.put(candidato, votante);
-        else {
-            throw new Exception("Eleitor já votou");
+        } finally {
+            this.menu();
         }
 
     }
@@ -79,8 +80,14 @@ public class Votacao {
         votos.forEach((politico, eleitor) -> politicos.add(politico));
         Collections.sort(politicos, new VotosComparator());
         for (Politico p : politicos) {
-            System.out.println("Votos: " + p.getVotos());
+            System.out.println("===============================");
+            System.out.printf("Nome do politico: %s \n", p.getNome());
+            System.out.printf("Cpf do politico: %s \n", p.getCpf());
+            System.out.printf("Partido do politico: %s \n", p.getPartido().getNome());
+            System.out.printf("Quantidade de votos: %d \n", p.getVotos());
+            System.out.println("===============================");
         }
+        this.menu();
     }
 
     // Todos os dados eleitorais dos votantes e dos cadindatos
@@ -91,7 +98,7 @@ public class Votacao {
             politicos.add(politico);
             eleitores.add(eleitor);
         });
-
+        System.out.println("--------------------------------");
         System.out.println("Dados dos votantes:");
         for (Eleitor e : eleitores) {
             System.out.println(e.getDadosEleitorais());
@@ -103,6 +110,8 @@ public class Votacao {
         for (Politico p : politicos) {
             System.out.println(p.getDadosEleitorais());
         }
+        System.out.println("--------------------------------");
+        this.menu();
     }
 }
 

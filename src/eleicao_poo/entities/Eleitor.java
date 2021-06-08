@@ -16,6 +16,7 @@ public class Eleitor extends Cidadao {
 
     public Eleitor(String nome, String cpf, Date dataNascimento, String titulo) throws ParseException {
         super(nome, cpf, dataNascimento);
+        Eleitor.verificaTitulo(titulo);
         this.titulo = titulo;
 
     }
@@ -47,7 +48,8 @@ public class Eleitor extends Cidadao {
     @Override
     public String getDadosEleitorais() {
         StringBuilder builder = new StringBuilder();
-        builder.append("Nome: ").append(this.getNome()).append("Titulo de eleitor: ").append(this.titulo);
+        builder.append("Nome: ").append(this.getNome())
+            .append("\nTitulo de eleitor: ").append(this.titulo);
         return builder.toString();
     }
 
