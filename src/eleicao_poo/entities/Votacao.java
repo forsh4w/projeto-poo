@@ -59,13 +59,13 @@ public class Votacao {
         try {
             votante = cd.findEleitor();
             candidato = cd.findPoliticoByCpf();
-            votante.votar();
-            candidato.addVoto();
             if (!this.votos.containsValue(votante))
                 this.votos.put(candidato, votante);
             else {
                 throw new Exception("Eleitor já votou");
             }
+            votante.votar();
+            candidato.addVoto();
         } catch (Exception e) {
             System.err.println(e.getMessage());
         } finally {
